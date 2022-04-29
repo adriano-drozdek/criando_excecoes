@@ -1,6 +1,7 @@
 package model.entities;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class Reserva {
 
@@ -28,6 +29,11 @@ public class Reserva {
 
 	public Date getDataSaida() {
 		return dataSaida;
+	}
+
+	public long duracao() {
+		long dif = dataEntrada.getTime() - dataSaida.getTime();
+		return TimeUnit.DAYS.convert(dif, TimeUnit.MILLISECONDS);
 	}
 
 }
