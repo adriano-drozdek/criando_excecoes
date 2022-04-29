@@ -1,5 +1,6 @@
 package model.entities;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -9,6 +10,8 @@ public class Reserva {
 	private Date dataEntrada;
 	private Date dataSaida;
 
+	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	
 	public Reserva(Integer numeroQuarto, Date dataEntrada, Date dataSaida) {
 		this.numeroQuarto = numeroQuarto;
 		this.dataEntrada = dataEntrada;
@@ -41,4 +44,14 @@ public class Reserva {
 		this.dataSaida = dataSaida;
 	}
 
+	@Override
+	public String toString() {
+		return "Quarto"
+			+ numeroQuarto
+			+ ", data de entrada: "
+			+ sdf.format(dataEntrada)
+			+ ", "
+			+ duracao()
+			+ " noites";
+	}
 }
