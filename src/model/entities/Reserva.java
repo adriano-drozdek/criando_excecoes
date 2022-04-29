@@ -35,5 +35,10 @@ public class Reserva {
 		long dif = dataEntrada.getTime() - dataSaida.getTime();
 		return TimeUnit.DAYS.convert(dif, TimeUnit.MILLISECONDS);
 	}
+	
+	public void atualizarData(Date dataEntrada, Date dataSaida) {
+		this.dataEntrada = dataEntrada;
+		this.dataSaida = dataSaida;
+	}
 
 }
