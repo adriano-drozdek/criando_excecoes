@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+import model.entities.Reserva;
+
 public class Projeto {
 
 	public static void main(String[] args) throws ParseException {
@@ -12,13 +14,20 @@ public class Projeto {
 		Scanner sc = new Scanner(System.in);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-		System.out.println("Número do quarto: ");
-		int numeroQuarto = sc.nextInt();
-		System.out.println("Data de entrada: ");
+		System.out.print("Número do quarto: ");
+		int numero = sc.nextInt();
+		System.out.print("Data de entrada: ");
 		Date dataEntrada = sdf.parse(sc.next());
-		System.out.println("Data saída: ");
+		System.out.print("Data saída: ");
 		Date dataSaida = sdf.parse(sc.next());
 
+		if (!dataSaida.after(dataEntrada)) {
+			System.out.println("Erro na reserva, data de saída deve ser depois da data de entrada!  ");
+		}
+		else {
+			Reserva reserva = new Reserva(numero, dataEntrada, dataSaida);
+			System.out.println("Reserva: " + reserva);
+		}
 		sc.close();
 
 	}
