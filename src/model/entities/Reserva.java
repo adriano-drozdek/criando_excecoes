@@ -35,7 +35,7 @@ public class Reserva {
 	}
 
 	public long duracao() {
-		long dif = dataEntrada.getTime() - dataSaida.getTime();
+		long dif = dataEntrada.getTime()  -dataSaida.getTime();
 		return TimeUnit.DAYS.convert(dif, TimeUnit.MILLISECONDS);
 	}
 	
@@ -46,10 +46,12 @@ public class Reserva {
 
 	@Override
 	public String toString() {
-		return "Quarto"
+		return "Quarto "
 			+ numeroQuarto
 			+ ", data de entrada: "
 			+ sdf.format(dataEntrada)
+			+ ", data de saída: "
+			+ sdf.format(dataSaida)
 			+ ", "
 			+ duracao()
 			+ " noites";
