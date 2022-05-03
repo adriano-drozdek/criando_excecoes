@@ -35,9 +35,17 @@ public class Projeto {
 			System.out.print("Data saída: ");
 			dataSaida = sdf.parse(sc.next());
 
-			reserva.atualizarData(dataEntrada, dataSaida);
-			System.out.println("Reserva: " + reserva);
-
+			Date gora = new Date();
+			if (dataEntrada.before(gora) || dataSaida.before(gora)) {
+				System.out.println("Erro na reserva,a reserva deve ser para uma data futura! ");
+			} 
+			else if (!dataSaida.after(dataEntrada)) {
+				System.out.println("Erro na reserva,  data de saída deve ser depois da data de entrada!  ");
+			} 
+			else {
+				reserva.atualizarData(dataEntrada, dataSaida);
+				System.out.println("Reserva: " + reserva);
+			}
 		}
 		sc.close();
 
